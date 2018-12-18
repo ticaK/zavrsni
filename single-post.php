@@ -59,6 +59,16 @@
                         <p class="blog-post-meta"><?php echo $singlePost['created_at'] ?> by <a href="#"><?php echo $singlePost['author'] ?></a></p>
                         <p><?php echo $singlePost['body']?> </p>
                 </div>
+                <form  name = 'commentForm' action = "create-comment.php" onsubmit = "return validateForm()" method = "post">
+                    <label >Author:</label><br>
+                    <input type = "text" name = "author" ><br><br>
+                    <label> Comment:</label><br>
+                    <textarea cols = "55" rows = "5" name = "text" placeholder= "Add comment..."></textarea><br>
+                    <input type="hidden" name="IdPosta" value="<?php echo $singlePost['id'] ?>" /><br>
+                    <input type = "submit"  name = "submit" value ="Submit">
+                </form>
+
+                <br><p id ="warning"></p><br>
 
                 <?php include('comments.php')?>
                 
