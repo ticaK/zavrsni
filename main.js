@@ -19,8 +19,8 @@ function hideComments() {
         var y = document.forms["commentForm"]["text"].value;
         var z = document.getElementById("warning");
 
-
         if (x == "" || y=="") {
+            
         z.className = "alert alert-warning";
         z.innerHTML = "Obavezno popuniti sva polja!";
         return false;

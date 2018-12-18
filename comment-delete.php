@@ -36,21 +36,21 @@ catch(PDOException $e)
 <body>
 <?php 
 
-    $author = $_POST['author'];
-    $text = $_POST['text'];
-    $post_id = $_POST['IdPosta'];
+    $cid = $_POST['cid'];
+    $postId = $_POST["postId"];
 
-    if ($author && $text && $post_id) {
-
-        $sql = "INSERT INTO comments (author, text, post_id) VALUES ('$author','$text', '$post_id')";
-
-        $connection->exec($sql);
-        
-        header('Location:http://localhost:8000/single-post.php?post_id=' . $post_id );
-    } 
-        
+    if(isset($_POST['commentDelete'])) {
+    
+    $sql = "DELETE FROM comments WHERE id = '$cid'";
+    $connection->exec($sql);
+    }
+    header('Location:http://localhost:8000/single-post.php?post_id='.$postId);
+    
     $connection = null;
-               
+
+                        
+                
+            
 ?>
 </body>
 </html>

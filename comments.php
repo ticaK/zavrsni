@@ -21,11 +21,20 @@
                                 <ul>
                                     <li><div>posted by: <strong><?php echo $comment['author'] ?> </strong></div>
                                         <div> <?php echo $comment['text'] ?> </div>
+                                            <form class = "delete-form" method = "post" action = 'comment-delete.php'>
+                                                <input type = "hidden" name = "cid" value = "<?php echo $comment['cid'] ?>">
+                                                <input type = "hidden" name="postId" value="<?php echo $singlePost['id'] ?>" />
+                                                <button type="submit" name = 'commentDelete' >Delete</button>
+                                            </form>
                                         <hr>
                                     </li>
                                 </ul>
 
                             </div>
                         <?php } ?>
+
+        
     </div>
+
+
                        
