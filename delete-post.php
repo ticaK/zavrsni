@@ -15,7 +15,7 @@
 ?>
 
 <!DOCTYPE html> 
-<html lang="en">
+    <html lang="en">
     <head>
 
         <meta charset="utf-8">
@@ -24,33 +24,39 @@
         <meta name="author" content="">
         <link rel="icon" href="../../../../favicon.ico">
 
-        <title>Moj Blog</title>
+        <title>Moj blog</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
-        <link rel="stylesheet" href="styles/styles.css" >
+        <link rel="stylesheet" href="styles.css" >
+
+
 
     </head>
 
     <body>
-        <?php 
+    <?php 
+        
+        $id = $_POST['id'];
+        $ch = $_POST['che'];
+    
+        if ($ch === "true") { 
 
-            $title = $_POST['title'];
-            $author = $_POST['author'];
-            $text = $_POST['post-content'];
-            $date = date("Y-m-d H:i:s");
-
-            if($title && $author && $text && $date) {
-                $sql = "INSERT INTO posts (title, body, author, created_at) VALUES ('$title','$text', '$author', '$date')";
+                $sql = "DELETE FROM comments WHERE post_id = '$id'";
                 $connection->exec($sql);
-                header('Location:http://localhost:8000');                            
-            } 
-                
-            $connection = null;
-                
+                $sql1 = "DELETE FROM posts WHERE id = '$id'";
+                $connection->exec($sql1);
+                header('Location:http://localhost:8000');
+        }
+
+        else {
+            header('Location:http://localhost:8000/single-post.php?post_id=' . $id );
+        }
         
 
-        ?>
-    </body>
+        $connection = null;
 
+
+    ?>
+    </body>
 </html>

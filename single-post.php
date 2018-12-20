@@ -1,6 +1,5 @@
 <?php
-    // ako su mysql username/password i ime baze na vasim racunarima drugaciji
-    // obavezno ih ovde zamenite
+
     $servername = "127.0.0.1";
     $username = "root";
     $password = "vivify";
@@ -16,7 +15,7 @@
     }
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -28,14 +27,14 @@
 
     <title>Vivify Blog</title>
 
-    <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
-    <!-- Custom styles for this template -->
     <link href="styles/blog.css" rel="stylesheet">
     <link href="styles/styles.css" rel="stylesheet">
-    <script src = "main.js">
-    </script>
+
+    
+
+    
 </head>
 
 <body>
@@ -46,6 +45,7 @@
     <div class="row">
         <div class="col-sm-8 blog-main">
         <?php
+
             if (isset($_GET['post_id'])) {
                 $sql2 = "SELECT * FROM posts WHERE posts.id = {$_GET['post_id']}";
                 $statement = $connection->prepare($sql2);
@@ -55,10 +55,19 @@
         ?>
             
                 <div class="blog-post">
-                        <h2 class="blog-post-title"><?php echo $singlePost['title'] ?></a></h2>
-                        <p class="blog-post-meta"><?php echo $singlePost['created_at'] ?> by <a href="#"><?php echo $singlePost['author'] ?></a></p>
-                        <p><?php echo $singlePost['body']?> </p>
+                    <h2 class="blog-post-title"><?php echo $singlePost['title'] ?></a></h2>
+                    <p class="blog-post-meta"><?php echo $singlePost['created_at'] ?> by <a href="#"><?php echo $singlePost['author'] ?></a></p>
+                    <p><?php echo $singlePost['body']?> </p>
                 </div>
+
+
+                <form class = "delete-post" method = "post" action = 'delete-post.php' onsubmit = check() > 
+                    <input type = 'hidden' name = 'che' id = 'ch'>
+                    <input type = 'hidden' name = 'id' value = "<?php echo $singlePost['id'] ?>">
+                    <button type = "submit" class = "btn btn-primary" name = 'postDelete'>Delete this post</button>
+                </form><br><br>
+                
+
                 <form  name = 'commentForm' action = "create-comment.php" onsubmit = "return validateForm()" method = "post">
                     <label >Author:</label><br>
                     <input type = "text" name = "author" ><br><br>
@@ -73,18 +82,19 @@
                 <?php include('comments.php')?>
                 
 
-                <?php
-                } else {
-                    echo('post_id nije prosledjen kroz $_GET');
-                }
-                ?>
+            <?php
+            } else {
+                echo('post_id nije prosledjen kroz $_GET');
+            }
+            ?>
         </div>
         <?php include('sidebar.php'); ?>
 
-    </div><!-- /.row -->
+    </div>
 
-</main><!-- /.container -->
+</main>
 
 <?php include('footer.php')?>
 </body>
+<script src = "main.js"></script>
 </html>

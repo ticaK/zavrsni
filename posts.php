@@ -39,5 +39,5 @@
             <?php } ?>
 
 
-</div><!-- /.blog-main -->
+</div>
 
