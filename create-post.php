@@ -43,7 +43,7 @@
             if($title && $author && $text && $date) {
                 $sql = "INSERT INTO posts (title, body, author, created_at) VALUES ('$title','$text', '$author', '$date')";
                 $connection->exec($sql);
-                header('Location:http://localhost:8000');                            
+                header('Location:http://localhost:8000'); //vraca na home stranicu                           
             } 
                 
             $connection = null;

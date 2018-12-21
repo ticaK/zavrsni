@@ -34,9 +34,17 @@
                 <p class="blog-post-meta"><?php echo $post['created_at'] ?> by <a href="#"><?php echo $post['author'] ?></a></p>
 
                 <p><?php echo $post['body']?> </p>
-            </div> 
+            </div>
+             
 
             <?php } ?>
+
+            <nav class="blog-pagination">
+
+                   <a class="btn btn-outline-primary" href="#">Older</a>
+                   <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
+
+            </nav>
 
 
 </div>

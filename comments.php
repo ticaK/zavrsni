@@ -26,8 +26,8 @@
                             <div> <?php echo $comment['text'] ?> </div>
 
                                 <form class = "delete-form" method = "post" action = 'comment-delete.php'>
-                                    <input type = "hidden" name = "cid" value = "<?php echo $comment['cid'] ?>">
-                                    <input type = "hidden" name="postId" value="<?php echo $singlePost['id'] ?>" />
+                                    <input type = "hidden" name = "cid" value = "<?php echo $comment['cid'] ?>"/>
+                                    <input type = "hidden" name="postId" value="<?php echo $singlePost['id'] ?>"/>
                                     <button type = "submit" class = "btn btn-default" name = 'commentDelete' >Delete</button>
                                 </form>
 

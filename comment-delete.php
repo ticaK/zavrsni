@@ -34,8 +34,8 @@ catch(PDOException $e)
 <body>
 <?php 
 
-    $cid = $_POST['cid'];
-    $postId = $_POST["postId"];
+    $cid = $_POST['cid']; //id komentara
+    $postId = $_POST["postId"]; //id posta
 
         if(isset($_POST['commentDelete'])) {
         $sql = "DELETE FROM comments WHERE id = '$cid'";
@@ -43,7 +43,7 @@ catch(PDOException $e)
 
     }
 
-    header('Location:http://localhost:8000/single-post.php?post_id='.$postId);
+    header('Location:http://localhost:8000/single-post.php?post_id='.$postId); 
     
     $connection = null;
          

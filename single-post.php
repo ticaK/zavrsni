@@ -54,11 +54,13 @@
                 $singlePost = $statement->fetch();
         ?>
             
-                <div class="blog-post">
+                <div class="blog-post"> 
                     <h2 class="blog-post-title"><?php echo $singlePost['title'] ?></a></h2>
                     <p class="blog-post-meta"><?php echo $singlePost['created_at'] ?> by <a href="#"><?php echo $singlePost['author'] ?></a></p>
                     <p><?php echo $singlePost['body']?> </p>
                 </div>
+
+                
 
 
                 <form class = "delete-post" method = "post" action = 'delete-post.php' onsubmit = check() > 

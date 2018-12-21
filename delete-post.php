@@ -42,15 +42,15 @@
     
         if ($ch === "true") { 
 
-                $sql = "DELETE FROM comments WHERE post_id = '$id'";
+                $sql = "DELETE FROM comments WHERE post_id = '$id'"; //prvo brisemo sve komentre na datom postu, pa onda post, jer su tabele vezane
                 $connection->exec($sql);
                 $sql1 = "DELETE FROM posts WHERE id = '$id'";
                 $connection->exec($sql1);
-                header('Location:http://localhost:8000');
+                header('Location:http://localhost:8000'); //nakon brisanja posta povratak na home stranicu
         }
 
         else {
-            header('Location:http://localhost:8000/single-post.php?post_id=' . $id );
+            header('Location:http://localhost:8000/single-post.php?post_id=' . $id ); //ukoliko na pitanje:Do you really want to delete this post?, odgovorimo sa 'cancel',na datom postu treba da ostanemo 
         }
         
 
